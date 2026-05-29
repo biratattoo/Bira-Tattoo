@@ -277,6 +277,7 @@ nav a:hover{
   </button>
 
   
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const music = document.getElementById('bgMusic');
@@ -284,48 +285,13 @@ nav a:hover{
     let playing = false;
 
     if (button && music) {
-      // Volume bem baixo
       music.volume = 0.15;
 
-      // Cria um aviso para o usuário no celular
-      const aviso = document.createElement('div');
-      aviso.innerHTML = '🎵 TOQUE NO BOTÃO DO AUTO-FALANTE 🎵';
-      aviso.style.position = 'fixed';
-      aviso.style.bottom = '100px';
-      aviso.style.left = '10px';
-      aviso.style.right = '10px';
-      aviso.style.textAlign = 'center';
-      aviso.style.background = '#8a6a2f';
-      aviso.style.color = 'white';
-      aviso.style.padding = '12px';
-      aviso.style.borderRadius = '30px';
-      aviso.style.zIndex = '1000';
-      aviso.style.fontSize = '14px';
-      aviso.style.fontWeight = 'bold';
-      aviso.style.boxShadow = '0 2px 10px rgba(0,0,0,0.5)';
-      document.body.appendChild(aviso);
-
-      // Aviso some depois de 5 segundos
-      setTimeout(() => {
-        aviso.style.opacity = '0';
-        aviso.style.transition = '0.5s';
-        setTimeout(() => {
-          if (aviso.parentNode) aviso.remove();
-        }, 500);
-      }, 5000);
-
-      // Botão principal
       button.addEventListener('click', function() {
         if (!playing) {
-          music.play().then(() => {
-            button.innerHTML = '🔊';
-            playing = true;
-            // Se o aviso ainda estiver lá, remove
-            if (aviso.parentNode) aviso.remove();
-          }).catch(function(erro) {
-            console.log("Erro:", erro);
-            alert("Toque no botão novamente para ativar a música");
-          });
+          music.play();
+          button.innerHTML = '🔊';
+          playing = true;
         } else {
           music.pause();
           button.innerHTML = '🔇';
