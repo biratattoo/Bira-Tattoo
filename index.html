@@ -277,57 +277,52 @@ nav a:hover{
   </button>
 
 <script>
-  // Função para iniciar a música
-  function iniciarMusica() {
-    const music = document.getElementById('bgMusic');
-    const button = document.getElementById('musicButton');
-    
-    if (music && !window.musicaIniciada) {
-      music.volume = 0.2;
-      music.play();
-      window.musicaIniciada = true;
-      
-      // Atualiza o botão
-      if (button) {
-        button.innerHTML = '🔊';
-      }
-      
-      // Remove o evento depois que tocar
-      document.removeEventListener('click', iniciarMusica);
-      document.removeEventListener('touchstart', iniciarMusica);
-    }
-  }
-  
-  // Configura o botão manual
   document.addEventListener('DOMContentLoaded', function() {
     const music = document.getElementById('bgMusic');
     const button = document.getElementById('musicButton');
     let playing = false;
-    
+    let musicaAtivada = false;
+
     if (button && music) {
+      // Volume baixo (20%)
       music.volume = 0.2;
-      
-      // Clique no botão específico
-      button.addEventListener('click', function(e) {
-        e.stopPropagation(); // Evita disparar o evento duplicado
-        
-        if (!playing) {
+
+      // Função que toca a música (qualquer clique no site ativa)
+      function ativarMusica() {
+        if (!musicaAtivada) {
           music.play();
-          button.innerHTML = '🔊';
+          musicaAtivada = true;
           playing = true;
-          window.musicaIniciada = true;
-        } else {
-          music.pause();
-          button.innerHTML = '🔇';
-          playing = false;
+          button.innerHTML = '🔊';
+          
+          // Remove os eventos depois que a música já tiver tocado
+          document.removeEventListener('click', ativarMusica);
+          document.removeEventListener('touchstart', ativarMusica);
+        }
+      }
+
+      // Qualquer clique ou toque na tela inteira ativa a música
+      document.addEventListener('click', ativarMusica);
+      document.addEventListener('touchstart', ativarMusica);
+
+      // Botão específico (liga/desliga depois que a música já estiver tocando)
+      button.addEventListener('click', function(e) {
+        e.stopPropagation(); // Impede que o clique no botão ative a função duas vezes
+        
+        if (musicaAtivada) {
+          if (playing) {
+            music.pause();
+            button.innerHTML = '🔇';
+            playing = false;
+          } else {
+            music.play();
+            button.innerHTML = '🔊';
+            playing = true;
+          }
         }
       });
     }
   });
-  
-  // Primeira interação do usuário (qualquer clique ou toque)
-  document.addEventListener('click', iniciarMusica);
-  document.addEventListener('touchstart', iniciarMusica);
 </script>
 </body>
 
