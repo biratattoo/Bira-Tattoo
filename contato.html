@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato - Bira Tattoo | Ordem da Tinta</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #050505;
+      color: #e0e0e0;
+      font-family: 'Times New Roman', Georgia, serif;
+      min-height: 100vh;
+    }
+
+    .bg-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('fundo.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -2;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.82);
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+      border-bottom: 1px solid #c9a54b;
+      padding-bottom: 30px;
+    }
+
+    header h1 {
+      font-size: clamp(32px, 6vw, 52px);
+      color: #c9a54b;
+      letter-spacing: 8px;
+      margin-bottom: 15px;
+    }
+
+    header p {
+      font-size: 16px;
+      font-style: italic;
+      color: #aaa;
+    }
+
+    nav {
+      margin-top: 25px;
+    }
+
+    nav a {
+      color: #c9a54b;
+      text-decoration: none;
+      margin: 0 12px;
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .grid-contato {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-top: 30px;
+    }
+
+    .info-card {
+      flex: 1;
+      min-width: 250px;
+      background: rgba(20, 20, 20, 0.7);
+      backdrop-filter: blur(5px);
+      padding: 35px 25px;
+      text-align: center;
+      border: 1px solid #c9a54b40;
+      border-radius: 15px;
+      transition: 0.4s;
+    }
+
+    .info-card:hover {
+      border-color: #c9a54b;
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    }
+
+    .info-card .icone {
+      font-size: 48px;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .info-card h3 {
+      color: #c9a54b;
+      font-size: 24px;
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+    }
+
+    .info-card p {
+      font-size: 18px;
+      line-height: 1.5;
+      color: #ddd;
+    }
+
+    .info-card a {
+      color: #c9a54b;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .info-card a:hover {
+      text-decoration: underline;
+    }
+
+    .small {
+      font-size: 13px;
+      color: #888;
+      margin-top: 10px;
+    }
+
+    .local-card {
+      flex: 2;
+      background: rgba(20, 20, 20, 0.7);
+      backdrop-filter: blur(5px);
+      padding: 35px 25px;
+      border: 1px solid #c9a54b40;
+      border-radius: 15px;
+      transition: 0.4s;
+    }
+
+    .local-card:hover {
+      border-color: #c9a54b;
+    }
+
+    .local-card h3 {
+      color: #c9a54b;
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+
+    .local-card p {
+      margin: 12px 0;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .btn-voltar {
+      display: inline-block;
+      margin-top: 50px;
+      background: transparent;
+      border: 2px solid #c9a54b;
+      color: #c9a54b;
+      padding: 12px 32px;
+      text-decoration: none;
+      letter-spacing: 4px;
+      transition: 0.3s;
+      text-align: center;
+    }
+
+    .btn-voltar:hover {
+      background: #c9a54b;
+      color: #050505;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 12px;
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 40px 15px;
+      }
+      nav a {
+        display: inline-block;
+        margin: 5px 8px;
+      }
+      .info-card, .local-card {
+        padding: 25px 18px;
+      }
+      .info-card .icone {
+        font-size: 38px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-image"></div>
+  <div class="overlay"></div>
+
+  <div class="container">
+    <header>
+      <h1>✦ CONTATO ✦</h1>
+      <p>Entre em contato com a Ordem da Tinta</p>
+      <nav>
+        <a href="index.html">PORTAL</a>
+        <a href="equipe.html">EQUIPE</a>
+        <a href="portifolio.html">PORTIFOLIO</a>
+        <a href="liturgic-trap.html">LITURGIC TRAP</a>
+        <a href="contato.html">CONTATO</a>
+      </nav>
+    </header>
+
+    <div class="grid-contato">
+      
+      <!-- WhatsApp -->
+      <div class="info-card">
+        <div class="icone">📱</div>
+        <h3>WHATSAPP</h3>
+        <p>Atendimento rápido e direto</p>
+        <a href="https://wa.me/55SEUTELEFONE" target="_blank">(XX) XXXXX-XXXX</a>
+        <div class="small">Clique e chame no zap</div>
+      </div>
+
+      <!-- Instagram -->
+      <div class="info-card">
+        <div class="icone">📸</div>
+        <h3>INSTAGRAM</h3>
+        <p>Trabalhos, bastidores e arte</p>
+        <a href="https://instagram.com/seuperfil" target="_blank">@biratattoo</a>
+        <div class="small">Siga para acompanhar</div>
+      </div>
+
+      <!-- E-mail -->
+      <div class="info-card">
+        <div class="icone">✉️</div>
+        <h3>E-MAIL</h3>
+        <p>Para propostas e parcerias</p>
+        <a href="mailto:contato@biratattoo.com">contato@biratattoo.com</a>
+        <div class="small">Respondemos em até 24h</div>
+      </div>
+    </div>
+
+    <!-- Localização (opcional) -->
+    <div class="local-card" style="margin-top: 30px;">
+      <h3>⚔️ ONDE NOS ENCONTRAR ⚔️</h3>
+      <p>📍 Cidade, Estado - Brasil</p>
+      <p>Atendimento com hora marcada. Somente para verdadeiros buscadores da tinta.</p>
+      <div class="small">Entre em contato para agendar seu horário.</div>
+    </div>
+
+    <div style="text-align: center;">
+      <a href="index.html" class="btn-voltar">← VOLTAR AO PORTAL</a>
+    </div>
+    <div class="footer-note">
+      Sangue, tinta e fé. Somos a Ordem.
+    </div>
+  </div>
+
+</body>
+</html>
