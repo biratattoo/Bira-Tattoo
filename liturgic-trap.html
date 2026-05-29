@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liturgic Trap - A Ordem</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #050505;
+      color: #e0e0e0;
+      font-family: 'Times New Roman', Georgia, serif;
+      min-height: 100vh;
+    }
+
+    .bg-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('fundo.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -2;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    header {
+      margin-bottom: 50px;
+      border-bottom: 1px solid #c9a54b;
+      padding-bottom: 30px;
+    }
+
+    header h1 {
+      font-size: clamp(28px, 6vw, 48px);
+      color: #c9a54b;
+      letter-spacing: 6px;
+      margin-bottom: 15px;
+    }
+
+    header p {
+      font-size: 16px;
+      font-style: italic;
+      color: #aaa;
+    }
+
+    nav {
+      margin-top: 25px;
+    }
+
+    nav a {
+      color: #c9a54b;
+      text-decoration: none;
+      margin: 0 12px;
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .player-container {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      padding: 20px;
+      border: 1px solid #c9a54b30;
+      margin-bottom: 40px;
+    }
+
+    .player-container iframe {
+      border-radius: 10px;
+    }
+
+    .descricao {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 25px;
+      border-radius: 10px;
+      margin-top: 30px;
+      border-left: 3px solid #c9a54b;
+    }
+
+    .descricao h3 {
+      color: #c9a54b;
+      margin-bottom: 15px;
+      font-size: 22px;
+    }
+
+    .descricao p {
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .btn-voltar {
+      display: inline-block;
+      margin-top: 40px;
+      background: transparent;
+      border: 2px solid #c9a54b;
+      color: #c9a54b;
+      padding: 12px 28px;
+      text-decoration: none;
+      letter-spacing: 3px;
+      transition: 0.3s;
+    }
+
+    .btn-voltar:hover {
+      background: #c9a54b;
+      color: #050505;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 40px 15px;
+      }
+      nav a {
+        display: inline-block;
+        margin: 5px 8px;
+      }
+      .player-container {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-image"></div>
+  <div class="overlay"></div>
+
+  <div class="container">
+    <header>
+      <h1>LITURGIC TRAP</h1>
+      <p>A ORDEM - ÁLBUM COMPLETO</p>
+      <nav>
+        <a href="index.html">PORTAL</a>
+        <a href="equipe.html">EQUIPE</a>
+        <a href="liturgic-trap.html">LITURGIC TRAP</a>
+        <a href="contato.html">CONTATO</a>
+      </nav>
+    </header>
+
+    <div class="player-container">
+      <iframe src="https://audiomack.com/embed/biratattoo/album/liturgic-trap-a-ordem" 
+              scrolling="no" 
+              width="100%" 
+              height="400" 
+              frameborder="0"
+              allow="autoplay">
+      </iframe>
+    </div>
+
+    <div class="descricao">
+      <h3>⚔️ Sobre o Álbum ⚔️</h3>
+      <p>
+        "Liturgic Trap - A Ordem" é mais que um álbum, é um manifesto sonoro. 
+        Uma fusão entre a estética das catedrais antigas, o peso da liturgia e 
+        a crueza do trap underground. Das sombras dos vitrais para os seus ouvidos. 
+        🎵🔊
+      </p>
+    </div>
+
+    <a href="index.html" class="btn-voltar">← VOLTAR AO PORTAL</a>
+  </div>
+
+</body>
+</html>
