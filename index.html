@@ -276,23 +276,34 @@ nav a:hover{
     🔇
   </button>
 
-  <script>
-  // Aguarda o HTML carregar completamente
+<script>
   document.addEventListener('DOMContentLoaded', function() {
     const music = document.getElementById('bgMusic');
     const button = document.getElementById('musicButton');
-    let playing = false;
+    let playing = true; // Começa como TRUE (tocando)
 
     if (button && music) {
-      button.addEventListener('click', () => {
-        if (!playing) {
-          music.play();
-          button.innerHTML = '🔊';
-          playing = true;
-        } else {
+      // Define volume baixo (0.2 = 20% do volume máximo)
+      music.volume = 0.2;
+      
+      // Tenta tocar a música automaticamente
+      music.play().catch(function(error) {
+        // Navegadores bloqueiam autoplay às vezes
+        console.log("Autoplay bloqueado:", error);
+        playing = false;
+        button.innerHTML = '🔇';
+      });
+      
+      // Botão liga/desliga
+      button.addEventListener('click', function() {
+        if (playing) {
           music.pause();
           button.innerHTML = '🔇';
           playing = false;
+        } else {
+          music.play();
+          button.innerHTML = '🔊';
+          playing = true;
         }
       });
     }
