@@ -1,105 +1,89 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bira Tattoo - Nossa Ordem</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<!DOCTYPE html>  <html lang="pt-BR">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>Bira Tattoo - Nossa Ordem</title>  
+  <style>  
+    * {  
+      margin: 0;  
+      padding: 0;  
+      box-sizing: border-box;  
+    }  body {  
+  background: #0a0a0a;  
+  color: #e0e0e0;  
+  font-family: 'Times New Roman', Georgia, serif;  
+  line-height: 1.6;  
+}  
 
-    body {
-      background: #0a0a0a;
-      color: #e0e0e0;
-      font-family: 'Times New Roman', Georgia, serif;
-      line-height: 1.6;
-    }
+/* IMAGEM DE FUNDO */
 
-    /* IMAGEM DE FUNDO */
 .bg-image {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('./fundo.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: -2;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: url('./fundo.jpg');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+z-index: -2;
 }
-    
 
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.73);
-      z-index: -1;
-    }
+.overlay {  
+  position: fixed;  
+  top: 0;  
+  left: 0;  
+  width: 100%;  
+  height: 100%;  
+  background: rgba(0, 0, 0, 0.73);  
+  z-index: -1;  
+}  
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 60px 20px;
-    }
+.container {  
+  max-width: 1200px;  
+  margin: 0 auto;  
+  padding: 60px 20px;  
+}  
 
-    header {
-      text-align: center;
-      margin-bottom: 60px;
-      border-bottom: 1px solid #c9a54b;
-      padding-bottom: 30px;
-    }
+header {  
+  text-align: center;  
+  margin-bottom: 60px;  
+  border-bottom: 1px solid #c9a54b;  
+  padding-bottom: 30px;  
+}  
 
-    header h1 {
-      font-size: clamp(32px, 6vw, 56px);
-      color: #c9a54b;
-      letter-spacing: 6px;
-    }
+header h1 {  
+  font-size: clamp(32px, 6vw, 56px);  
+  color: #c9a54b;  
+  letter-spacing: 6px;  
+}  
 
-    header p {
-      font-size: 18px;
-      margin-top: 15px;
-      font-style: italic;
-    }
+header p {  
+  font-size: 18px;  
+  margin-top: 15px;  
+  font-style: italic;  
+}  
 
-    .equipe {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 50px;
-      margin-top: 40px;
-      max-width: 1000px;
-margin: 40px auto 0;
-      max-width: 1000px;
-margin: 40px auto 0;
-    }
+.equipe {  
+  display: flex;  
+  flex-wrap: wrap;  
+  justify-content: center;  
+  gap: 50px;  
+  margin-top: 40px;  
+}  
 
-    .membro {
-      flex: 1;
-      min-width: 280px;
-      text-align: center;
-      background: rgba(15, 15, 15, 0.55);
-      padding: 30px;
-      border-radius: 10px;
-      border: 1px solid rgba(201,165,75,.25);
-      backdrop-filter: blur(8px);
--webkit-backdrop-filter: blur(8px);
-      box-shadow: 0 0 25px rgba(0,0,0,.4);
-      transition: all .4s ease;
-    }
-      .membro:hover{
-    transform: translateY(-8px);
-    border-color: rgba(201,165,75,.55);
-}
-    }
+.membro {  
+  flex: 1;  
+  min-width: 280px;  
+  text-align: center;  
+  background: rgba(30, 30, 30, 0.7);  
+  padding: 30px;  
+  border-radius: 10px;  
+  border: 1px solid #c9a54b30;  
+}  
 
-    .membro img {  
+.membro img {  
   width: 250px;  
   height: 250px;  
   object-fit: cover;  
@@ -108,87 +92,75 @@ margin: 40px auto 0;
   margin-bottom: 20px;  
 }  
 
-    .membro h2 {
-      font-size: 28px;
-      color: #c9a54b;
-      margin-bottom: 10px;
-    }
+.membro h2 {  
+  font-size: 28px;  
+  color: #c9a54b;  
+  margin-bottom: 10px;  
+}  
 
-    .membro .titulo {
-      font-size: 14px;
-      letter-spacing: 3px;
-      margin-bottom: 20px;
-      color: #aaa;
-    }
+.membro .titulo {  
+  font-size: 14px;  
+  letter-spacing: 3px;  
+  margin-bottom: 20px;  
+  color: #aaa;  
+}  
 
-    .membro p {
-      font-size: 16px;
-      text-align: left;
-    }
+.membro p {  
+  font-size: 16px;  
+  text-align: justify;  
+}  
 
-    .btn-voltar {
-      display: block;
-      width: 200px;
-      margin: 50px auto 0;
-      background: transparent;
-      border: 2px solid #c9a54b;
-      color: #c9a54b;
-      padding: 12px 24px;
-      text-align: center;
-      text-decoration: none;
-      letter-spacing: 3px;
-      transition: 0.3s;
-    }
+.btn-voltar {  
+  display: block;  
+  width: 200px;  
+  margin: 50px auto 0;  
+  background: transparent;  
+  border: 2px solid #c9a54b;  
+  color: #c9a54b;  
+  padding: 12px 24px;  
+  text-align: center;  
+  text-decoration: none;  
+  letter-spacing: 3px;  
+  transition: 0.3s;  
+}  
 
-    .menu a{
- color:#c9a54b;
- text-decoration:none;
+.btn-voltar:hover {  
+  background: #c9a54b;  
+  color: #050505;  
+}  
+
+@media (max-width: 768px) {  
+  .container {  
+    padding: 30px 15px;  
+  }  
+  .membro img {  
+    width: 180px;  
+    height: 180px;  
+  }  
 }
 
-    .btn-voltar:hover {
-      background: #c9a54b;
-      color: #050505;
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        padding: 30px 15px;
-      }
-      .membro img {
-        width: 180px;
-        height: 180px;
-      }
-    }
-  </style>
-</head>
-<body>
-<!--  <video autoplay muted loop playsinline class="bg-video">
-    <img src="video1.mp4" type="image/jpg">
-  </video> -->
-  <div class="bg-image"></div>
-
-  <div class="overlay"></div>
-
-  <div class="container">
-    <header>
-  <h1>BIRA TATTOO</h1>
-  <p>A Ordem da Tinta e do Silêncio</p>
-  
-  <nav style="margin-top: 30px;">
-    <a href="index.html" style="color: #c9a54b; text-decoration: none; margin: 0 15px;">PORTAL</a>
-    <a href="equipe.html" style="color: #c9a54b; text-decoration: none; margin: 0 15px;">EQUIPE</a>
-    <a href="portifolio.html" style="color: #c9a54b; text-decoration: none; margin: 0 15px;">PORTFÓLIO</a>
-    <a href="liturgic-trap.html" style="color: #c9a54b; text-decoration: none; margin: 0 15px;">LITURGIC TRAP</a>
- <a href="contato.html" style="color: #c9a54b; text-decoration: none; margin: 0 15px;">CONTATO</a>
-  </nav>
-</header>
-
-    <div class="equipe">
-      <div class="membro">
-        <img src="biraeligian.jpg" alt="Bira Tattoo">
-        <h2>Bira Tattoo</h2>
-        <div class="titulo">✦ TATUADOR • FUNDADOR ✦</div>
-        <p>Bira Tattoo nasceu no underground, muito antes da tatuagem virar moda.
+  </style>  
+</head>  
+<body>  
+<!--  <video autoplay muted loop playsinline class="bg-video">  
+    <img src="video1.mp4" type="image/jpg">  
+  </video> -->  
+  <div class="bg-image"></div>    <div class="overlay"></div>    <div class="container">  
+    <header>  
+  <h1>BIRA TATTOO</h1>  
+  <p>A Ordem da Tinta e do Silêncio</p>    <nav style="margin-top: 30px;">  
+    <a href="index.html" style="color: #c9a54b; text-decoration: none; margin: 0 15px;">PORTAL</a>  
+    <a href="equipe.html" style="color: #c9a54b; text-decoration: none; margin: 0 15px;">EQUIPE</a>  
+    <a href="portifolio.html" style="color: #c9a54b; text-decoration: none; margin: 0 15px;">PORTFÓLIO</a>  
+    <a href="liturgic-trap.html" style="color: #c9a54b; text-decoration: none; margin: 0 15px;">LITURGIC TRAP</a>  
+ <a href="contato.html" style="color: #c9a54b; text-decoration: none; margin: 0 15px;">CONTATO</a>  
+  </nav>  
+</header>  <div class="equipe">  
+  <div class="membro">  
+    <img src="biraeligian.jpg" alt="Bira Tattoo">  
+    <h2>Bira Tattoo</h2>  
+    <div class="titulo">✦ MESTRE DA ORDEM ✦</div>  
+    <p>Bira Tattoo nasceu no underground, muito antes da tatuagem virar moda.
 
 Em 1994, no meio da quebrada, comecei com máquina caseira, improviso e vontade de vencer. Na época, tatuador era visto como marginal. Não existia apoio, estrutura ou respeito. Só preconceito, correria e resistência.
 
@@ -205,36 +177,32 @@ Poucos viveram a história.
 Bira Tattoo não é hype.
 Não é personagem de internet.
 É raiz. É resistência. É verdade.</p>
-      </div>
+</div>
 
-      <div class="membro">
-        <img src="biraeligian.jpg" alt="Ligian">
-        <h2>Ligian</h2>
-        <div class="titulo">✦ ESTRUTURA • GESTÃO • GUARDIÃ DA ORDEM ✦</div>
-        <p>Ligian não está só ao lado do Bira Tattoo. Ela faz parte da engrenagem que mantém tudo funcionando.
- 
+<div class="membro">  
+    <img src="biraeligian.jpg" alt="Ligian">  
+    <h2>Ligian</h2>  
+    <div class="titulo">✦ GUARDIÃ DA ORDEM ✦</div>  
+    <p>Ligian não está só ao lado do Bira Tattoo. Ela faz parte da engrenagem que mantém tudo funcionando.
+
 Enquanto muitos enxergam apenas a tatuagem pronta, existe toda uma correria por trás de cada sessão, cada projeto e cada conquista. Organização, apoio, presença, dedicação e resistência fazem parte dessa caminhada.
- 
+
 Em um mundo cheio de aparência e personagem criado pra internet, Ligian representa a lealdade, a força e a parceria real construída no dia a dia.
- 
+
 Porque o Bira Tattoo nunca foi feito por uma pessoa só. Foi construído na raça, na união e na persistência.</p>
-      </div>
-    </div>
+</div>
+</div>
 
- <!--   <a href="index.html" class="btn-voltar">← VOLTAR AO PORTAL</a>
-  </div>-->
-
-  <script>
-    // Música para a página da equipe (se quiser)
-    const music = document.getElementById('bgMusic');
-    if (music) {
-      music.volume = 0.2;
-      music.play().catch(() => {});
-    }
-  </script>
-  
-  <audio id="bgMusic" loop>
-    <source src="intro.mp3" type="audio/mp3">
-  </audio>
-</body>
+ <!--   <a href="index.html" class="btn-voltar">← VOLTAR AO PORTAL</a>  
+  </div>-->    <script>  
+    // Música para a página da equipe (se quiser)  
+    const music = document.getElementById('bgMusic');  
+    if (music) {  
+      music.volume = 0.2;  
+      music.play().catch(() => {});  
+    }  
+  </script>    <audio id="bgMusic" loop>  
+    <source src="intro.mp3" type="audio/mp3">  
+  </audio>  
+</body>  
 </html>
