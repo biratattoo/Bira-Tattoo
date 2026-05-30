@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acervo | Coleções | Bira Tattoo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #050505;
+      color: #e0e0e0;
+      font-family: 'Times New Roman', Georgia, serif;
+      min-height: 100vh;
+    }
+
+    .bg-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('fundo.jpg');
+      background-size: cover;
+      background-position: center;
+      z-index: -2;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.88);
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+      border-bottom: 1px solid #c9a54b;
+      padding-bottom: 30px;
+    }
+
+    header h1 {
+      font-size: clamp(32px, 6vw, 52px);
+      color: #c9a54b;
+      letter-spacing: 6px;
+      margin-bottom: 15px;
+    }
+
+    header p {
+      font-size: 18px;
+      font-style: italic;
+      color: #aaa;
+    }
+
+    nav {
+      margin-top: 25px;
+    }
+
+    nav a {
+      color: #c9a54b;
+      text-decoration: none;
+      margin: 0 12px;
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+
+    .intro {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 50px auto;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .grid-colecoes {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 35px;
+    }
+
+    .card-colecao {
+      background: rgba(15, 15, 15, 0.85);
+      border: 1px solid #c9a54b40;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: 0.4s;
+    }
+
+    .card-colecao:hover {
+      transform: translateY(-8px);
+      border-color: #c9a54b;
+      box-shadow: 0 20px 35px rgba(0,0,0,0.6);
+    }
+
+    .card-colecao img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      transition: 0.5s;
+    }
+
+    .card-colecao:hover img {
+      transform: scale(1.03);
+    }
+
+    .info-colecao {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .info-colecao h3 {
+      color: #c9a54b;
+      font-size: 24px;
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+    }
+
+    .qtd {
+      font-size: 13px;
+      color: #aaa;
+      letter-spacing: 1px;
+    }
+
+    /* MODAL DA COLEÇÃO */
+    .modal-colecao {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.96);
+      overflow-y: auto;
+    }
+
+    .modal-content-colecao {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #c9a54b;
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .modal-header h2 {
+      color: #c9a54b;
+      font-size: 28px;
+      letter-spacing: 2px;
+    }
+
+    .close-modal {
+      color: #c9a54b;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .close-modal:hover {
+      color: white;
+    }
+
+    .grid-desenhos {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .card-desenho {
+      background: rgba(0,0,0,0.6);
+      border: 1px solid #c9a54b30;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .card-desenho:hover {
+      border-color: #c9a54b;
+      transform: scale(1.02);
+    }
+
+    .card-desenho img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+
+    .desenho-info {
+      padding: 14px;
+      text-align: center;
+    }
+
+    .desenho-info h4 {
+      color: #c9a54b;
+      font-size: 16px;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    .desenho-registro {
+      font-size: 11px;
+      color: #888;
+      font-family: monospace;
+      margin-bottom: 5px;
+    }
+
+    .desenho-tecnica {
+      font-size: 11px;
+      color: #aaa;
+    }
+
+    /* MODAL ZOOM */
+    .modal-img {
+      display: none;
+      position: fixed;
+      z-index: 3000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.98);
+      cursor: pointer;
+    }
+
+    .modal-img-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 20px;
+    }
+
+    .modal-img-content img {
+      max-width: 90%;
+      max-height: 90%;
+      border: 3px solid #c9a54b;
+      border-radius: 8px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 70px;
+      padding-top: 30px;
+      border-top: 1px solid #c9a54b30;
+      font-size: 13px;
+      color: #777;
+    }
+
+    @media (max-width: 700px) {
+      .grid-colecoes {
+        grid-template-columns: 1fr;
+      }
+      .modal-header h2 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-image"></div>
+<div class="overlay"></div>
+
+<div class="container">
+  <header>
+    <h1> ACERVO </h1>
+    <p>Coleções autorais · Desenhos numerados</p>
+    <nav>
+      <a href="index.html">PORTAL</a>
+      <a href="equipe.html">EQUIPE</a>
+      <a href="portifolio.html">PORTFÓLIO</a>
+      <a href="liturgic-trap.html">LITURGIC TRAP</a>
+      <a href="projetos.html">PROJETOS</a>
+      <a href="acervo.html">ACERVO</a>
+      <a href="contato.html">CONTATO</a>
+    </nav>
+  </header>
+
+  <div class="intro">
+    ⚔️ Cada coleção é um capítulo. Cada desenho, uma relíquia com seu próprio registro. ⚔️
+  </div>
+
+  <div class="grid-colecoes" id="grid-colecoes"></div>
+
+  <div class="footer">
+    Bira Tattoo & Ligian · A tinta e a alma · A correria e o afeto
+  </div>
+</div>
+
+<!-- MODAL DA COLEÇÃO -->
+<div id="modalColecao" class="modal-colecao">
+  <div class="modal-content-colecao">
+    <div class="modal-header">
+      <h2 id="modal-colecao-titulo"></h2>
+      <span class="close-modal" id="closeModalColecao">&times;</span>
+    </div>
+    <div id="grid-desenhos" class="grid-desenhos"></div>
+  </div>
+</div>
+
+<!-- MODAL ZOOM -->
+<div id="modalImg" class="modal-img">
+  <div class="modal-img-content">
+    <img id="modal-img-src" src="" alt="Zoom">
+  </div>
+</div>
+
+<script>
+  // ============================================
+  // BANCO DE DADOS (VOCÊ EDITA AQUI)
+  // Cada desenho tem: colecao, projeto, registro, imagem, tecnica, ano
+  // ============================================
+  
+  const colecoes = [
+    {
+      nome: "ORIENTAL",
+      capa: "oriental-capa.jpg",
+      desenhos: [
+        { 
+          projeto: "Renascendo das Cinzas",
+          registro: "Oriental 001/26",
+          imagem: "oriental01.jpg",
+          tecnica: "Nanquim",
+          ano: "2024"
+        },
+        { 
+          projeto: "Ascensão das carpas",
+          registro: "Oriental 002/26",
+          imagem: "oriental02.jpg",
+          tecnica: "Nanquim",
+          ano: "2024"
+        },
+        { 
+          projeto: "Tigre e Ondas",
+          registro: "Oriental 003/26",
+          imagem: "oriental03.jpg",
+          tecnica: "Nanquim",
+          ano: "2024"
+        }
+        // ADICIONE MAIS DESENHOS AQUI
+      ]
+    },
+    {
+      nome: "ANIMAIS DO PANTANAL",
+      capa: "pantanal-capa.jpg",
+      desenhos: [
+        { 
+          projeto: "Onça Pintada",
+          registro: "Animais do Pantanal 001/26",
+          imagem: "pantanal01.jpg",
+          tecnica: "Grafite",
+          ano: "2024"
+        },
+        { 
+          projeto: "Tuiuiú",
+          registro: "Animais do Pantanal 002/26",
+          imagem: "pantanal02.jpg",
+          tecnica: "Grafite",
+          ano: "2024"
+        }
+        // ADICIONE MAIS DESENHOS AQUI
+      ]
+    }
+  ];
+
+  // ============================================
+  // RENDERIZA AS COLEÇÕES
+  // ============================================
+  const gridColecoes = document.getElementById('grid-colecoes');
+  
+  function renderizarColecoes() {
+    gridColecoes.innerHTML = '';
+    colecoes.forEach((colecao, idx) => {
+      const card = document.createElement('div');
+      card.className = 'card-colecao';
+      card.setAttribute('data-idx', idx);
+      card.innerHTML = `
+        <img src="${colecao.capa}" alt="${colecao.nome}">
+        <div class="info-colecao">
+          <h3>${colecao.nome}</h3>
+          <div class="qtd">⚔️ ${colecao.desenhos.length} desenhos</div>
+        </div>
+      `;
+      card.addEventListener('click', () => abrirColecao(idx));
+      gridColecoes.appendChild(card);
+    });
+  }
+
+  // ============================================
+  // ABRE O MODAL COM OS DESENHOS
+  // ============================================
+  const modalColecao = document.getElementById('modalColecao');
+  const modalColecaoTitulo = document.getElementById('modal-colecao-titulo');
+  const gridDesenhos = document.getElementById('grid-desenhos');
+  const closeModalColecao = document.getElementById('closeModalColecao');
+
+  function abrirColecao(idx) {
+    const colecao = colecoes[idx];
+    if (!colecao) return;
+    
+    modalColecaoTitulo.innerHTML = `${colecao.nome}`;
+    gridDesenhos.innerHTML = '';
+    
+    colecao.desenhos.forEach((desenho) => {
+      const card = document.createElement('div');
+      card.className = 'card-desenho';
+      card.innerHTML = `
+        <img src="${desenho.imagem}" alt="${desenho.projeto}">
+        <div class="desenho-info">
+          <h4>${desenho.projeto}</h4>
+          <div class="desenho-registro">📜 ${desenho.registro}</div>
+          <div class="desenho-tecnica">${desenho.tecnica} · ${desenho.ano}</div>
+        </div>
+      `;
+      card.addEventListener('click', (e) => {
+        e.stopPropagation();
+        abrirZoom(desenho.imagem);
+      });
+      gridDesenhos.appendChild(card);
+    });
+    
+    modalColecao.style.display = 'block';
+  }
+
+  closeModalColecao.addEventListener('click', () => {
+    modalColecao.style.display = 'none';
+  });
+
+  modalColecao.addEventListener('click', (e) => {
+    if (e.target === modalColecao) {
+      modalColecao.style.display = 'none';
+    }
+  });
+
+  // ============================================
+  // ZOOM
+  // ============================================
+  const modalImg = document.getElementById('modalImg');
+  const modalImgSrc = document.getElementById('modal-img-src');
+
+  function abrirZoom(src) {
+    modalImgSrc.src = src;
+    modalImg.style.display = 'block';
+  }
+
+  modalImg.addEventListener('click', () => {
+    modalImg.style.display = 'none';
+  });
+
+  renderizarColecoes();
+</script>
+
+</body>
+</html>
